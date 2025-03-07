@@ -2,15 +2,19 @@ public class Utilities()
 {
     public static bool Menu(string resultado)
     {
+        string res = resultado;
+
         while (true)
         {
-            Console.Clear();
-            if (!String.IsNullOrEmpty(resultado))
+            if (!String.IsNullOrEmpty(res))
             {
-                Console.WriteLine(resultado);
+                Console.WriteLine(res);
                 Console.WriteLine();
+                Console.WriteLine("Aperte qualquer botão para retornar ao menu principal.");
+                Console.ReadKey();
             }
 
+            Console.Clear();
             Console.WriteLine("Controle de estoque - Salvatore Xerri Variedades Ltda.\n");
             Console.WriteLine("Menu principal:");
             Console.WriteLine("[1] Novo");
@@ -27,35 +31,37 @@ public class Utilities()
             switch (input)
             {
                 case "1":
-                    Registros.Criar();
+                    res = Registros.Criar();
                     break;
                 case "2":
-                    Registros.Listar();
+                    res = Registros.Listar();
                     break;
                 case "3":
-                    Registros.Remover();
+                    res = Registros.Remover();
                     break;
                 case "4":
-                    Registros.Alteracao(true);
+                    res = Registros.Alteracao(true);
                     break;
                 case "5":
-                    Registros.Alteracao(false);
+                    res = Registros.Alteracao(false);
                     break;
                 case "0":
                     return false;
                 case "*":
+                    res = null;
                     new Registros("Camiseta Básica", 49.90, 100, "Brasil", "RoupaNac", "Vestuário");
                     new Registros("Notebook", 4299.00, 5, "EUA", "HomeOffice", "Eletrônicos");
                     new Registros("Mesa Escritório", 299.90, 10, "Argentina", "HomeOffice", "Móveis");
                     new Registros("Smartphone", 1899.00, 20, "China", "CeluChina", "Celulares");
                     new Registros("Fone Bluetooth", 199.50, 50, "China", "CeluChina", "Acessórios");
+                    Console.WriteLine("Listagem inicial concluída. Aperte qualquer botão para continuar.");
+                    Console.ReadKey();
                     break;
                 case "#":
-                    Registros.LimparRegistros();
+                    res = Registros.LimparRegistros();
                     break;
                 default:
-                    Console.Clear();
-                    Console.WriteLine("Escolha inválida. Tente novamente!");
+                    res = "Escolha inválida. Tente novamente!";
                     break;
             }
         }

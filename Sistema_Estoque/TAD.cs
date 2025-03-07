@@ -176,31 +176,45 @@ public class Registros
             return "Nenhum registro cadastrado.";
         }
 
-        var colunas = new Dictionary<string, int>
+        var colunas = new List<(string Nome, int Cont)>
         {
-            ["Nome"] = "Nome".Length,
-            ["Preço"] = "Preço".Length,
-            ["Estoque"] = "Estoque".Length,
-            ["País"] = "País".Length,
-            ["Fabricante"] = "Fabricante".Length,
-            ["Categoria"] = "Categoria".Length,
-            ["SKU"] = "SKU".Length
+            ("SKU", 10),
+            ("Nome", 20),
+            ("País", 15),
+            ("Fabricante", 15),
+            ("Categoria", 15),
+            ("Preço", 10),
+            ("Estoque", 10)
         };
 
         foreach (var reg in todosRegistros)
         {
-            colunas["Nome"] = Math.Max(colunas["Nome"], reg.nome.Length);
-            colunas["Preço"] = Math.Max(colunas["Preço"], reg.preco.ToString("N2").Length);
-            colunas["Estoque"] = Math.Max(colunas["Estoque"], reg.on_hand.ToString().Length);
-            colunas["País"] = Math.Max(colunas["País"], reg.pais_or.Length);
-            colunas["Fabricante"] = Math.Max(colunas["Fabricante"], reg.fabricante.Length);
-            colunas["Categoria"] = Math.Max(colunas["Categoria"], reg.categoria.Length);
-            colunas["SKU"] = Math.Max(colunas["SKU"], reg.SKU.Length);
+            colunas[0] = (colunas[0].Nome, Math.Max(colunas[0].Cont, reg.SKU.Length));
+            colunas[1] = (colunas[1].Nome, Math.Max(colunas[1].Cont, reg.nome.Length));
+            colunas[2] = (colunas[2].Nome, Math.Max(colunas[2].Cont, reg.pais_or.Length));
+            colunas[3] = (colunas[3].Nome, Math.Max(colunas[3].Cont, reg.fabricante.Length));
+            colunas[4] = (colunas[4].Nome, Math.Max(colunas[4].Cont, reg.categoria.Length));
+            colunas[5] = (colunas[5].Nome, Math.Max(colunas[5].Cont, $"R${reg.preco:N2}".Length));
+            colunas[6] = (colunas[6].Nome, Math.Max(colunas[6].Cont, reg.on_hand.ToString().Length));
         }
 
-        var format = string.Join(" | ", colunas.Select(c => $"{{0,-{c.Value}}}")) + " |";
+        var format = string.Format("|{0}|{1}|{2}|{3}|{4}|{5}|{6}|",
+            $" {{0,-{colunas[0].Cont}}} ",
+            $" {{1,-{colunas[1].Cont}}} ",
+            $" {{2,-{colunas[2].Cont}}} ",
+            $" {{3,-{colunas[3].Cont}}} ",
+            $" {{4,-{colunas[4].Cont}}} ",
+            $" {{5,-{colunas[5].Cont}}} ",
+            $" {{6,-{colunas[6].Cont}}} ");
+
         var header = string.Format(format,
-            "SKU", "Nome", "País", "Fabricante", "Categoria", "Preço", "Estoque");
+            colunas[0].Nome,
+            colunas[1].Nome,
+            colunas[2].Nome,
+            colunas[3].Nome,
+            colunas[4].Nome,
+            colunas[5].Nome,
+            colunas[6].Nome);
 
         // Print table
         Console.WriteLine(new string('-', header.Length));
@@ -215,8 +229,8 @@ public class Registros
                 reg.pais_or,
                 reg.fabricante,
                 reg.categoria,
-                "R$" + reg.preco.ToString("N2"),
-                reg.on_hand.ToString()
+                $"R${reg.preco:N2}",
+                reg.on_hand
                 );
         }
         Console.WriteLine(new string('-', header.Length));
@@ -286,7 +300,7 @@ public class Registros
                             Console.WriteLine("Entrada inválida! Insira um número inteiro:");
                             continue;
                         }
-                        if (quantidade <= 0)
+                        if (quantidade < 0)
                         {
                             Console.WriteLine("A quantidade deve ser positiva! Tente novamente:");
                             continue;
@@ -307,7 +321,7 @@ public class Registros
                             Console.WriteLine("Entrada inválida! Insira um número inteiro:");
                             continue;
                         }
-                        if (quantidade <= 0)
+                        if (quantidade < 0)
                         {
                             Console.WriteLine("A quantidade deve ser positiva! Tente novamente:");
                             continue;
@@ -337,7 +351,7 @@ public class Registros
         if (confirmacao == "S")
         {
             todosRegistros.Clear();
-            return "Todos os registros foram removidos com sucesso!";
+            return "Limpeza concluída.";
         }
         return "Operação cancelada.";
     }

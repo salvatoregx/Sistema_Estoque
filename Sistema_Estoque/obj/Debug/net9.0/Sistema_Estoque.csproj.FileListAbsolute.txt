@@ -1,0 +1,15 @@
+C:\Users\sgxer\Downloads\Sistema_Estoque\Sistema_Estoque\bin\Debug\net9.0\Sistema_Estoque.exe
+C:\Users\sgxer\Downloads\Sistema_Estoque\Sistema_Estoque\bin\Debug\net9.0\Sistema_Estoque.deps.json
+C:\Users\sgxer\Downloads\Sistema_Estoque\Sistema_Estoque\bin\Debug\net9.0\Sistema_Estoque.runtimeconfig.json
+C:\Users\sgxer\Downloads\Sistema_Estoque\Sistema_Estoque\bin\Debug\net9.0\Sistema_Estoque.dll
+C:\Users\sgxer\Downloads\Sistema_Estoque\Sistema_Estoque\bin\Debug\net9.0\Sistema_Estoque.pdb
+C:\Users\sgxer\Downloads\Sistema_Estoque\Sistema_Estoque\obj\Debug\net9.0\Sistema_Estoque.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\sgxer\Downloads\Sistema_Estoque\Sistema_Estoque\obj\Debug\net9.0\Sistema_Estoque.AssemblyInfoInputs.cache
+C:\Users\sgxer\Downloads\Sistema_Estoque\Sistema_Estoque\obj\Debug\net9.0\Sistema_Estoque.AssemblyInfo.cs
+C:\Users\sgxer\Downloads\Sistema_Estoque\Sistema_Estoque\obj\Debug\net9.0\Sistema_Estoque.csproj.CoreCompileInputs.cache
+C:\Users\sgxer\Downloads\Sistema_Estoque\Sistema_Estoque\obj\Debug\net9.0\Sistema_Estoque.sourcelink.json
+C:\Users\sgxer\Downloads\Sistema_Estoque\Sistema_Estoque\obj\Debug\net9.0\Sistema_Estoque.dll
+C:\Users\sgxer\Downloads\Sistema_Estoque\Sistema_Estoque\obj\Debug\net9.0\refint\Sistema_Estoque.dll
+C:\Users\sgxer\Downloads\Sistema_Estoque\Sistema_Estoque\obj\Debug\net9.0\Sistema_Estoque.pdb
+C:\Users\sgxer\Downloads\Sistema_Estoque\Sistema_Estoque\obj\Debug\net9.0\Sistema_Estoque.genruntimeconfig.cache
+C:\Users\sgxer\Downloads\Sistema_Estoque\Sistema_Estoque\obj\Debug\net9.0\ref\Sistema_Estoque.dll
