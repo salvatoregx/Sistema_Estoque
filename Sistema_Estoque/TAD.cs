@@ -4,32 +4,39 @@ using System.Threading.Channels;
 
 public class Registros
 {
-    string nome;
-    double preco;
-    public int on_hand;
-    string pais_or;
-    string fabricante;
-    string categoria;
+    private string nome;
+    private double preco;
+    private int on_hand;
+    private string pais_or;
+    private string fabricante;
+    private string categoria;
     public string SKU;
     private static int contador_SKU = 0;
     private static List<Registros> todosRegistros = new List<Registros>();
 
     public Registros(string n, double p, int oh, string po, string f, string c)
     {
-        nome = n;
-        preco = p;
-        on_hand = oh;
-        pais_or = po;
-        fabricante = f;
-        categoria = c;
+        this.nome = n;
+        this.preco = p;
+        this.on_hand = oh;
+        this.pais_or = po;
+        this.fabricante = f;
+        this.categoria = c;
         int SKU_unico = ++contador_SKU;
-        SKU = pais_or.Substring(0, 2) + fabricante.Substring(0, 3) + categoria.Substring(0, 3) + SKU_unico.ToString("D5");
+        this.SKU = pais_or.Substring(0, 2) + fabricante.Substring(0, 3) + categoria.Substring(0, 3) + SKU_unico.ToString("D5");
 
         todosRegistros.Add(this);
     }
 
-    public string Criar()
+    public static string Criar()
     {
+        string pais_orInput = "";
+        string fabricanteInput = "";
+        string categoriaInput = "";
+        string nomeInput = "";
+        double precoInput = 0;
+        int on_handInput = 0;
+
         bool flag = true;
         Console.Clear();
         Console.WriteLine("Novo Registro\n");
@@ -39,8 +46,8 @@ public class Registros
         {
             try
             {
-                string pais_or = Console.ReadLine();
-                flag = String.IsNullOrEmpty(pais_or);
+                pais_orInput = Console.ReadLine();
+                flag = String.IsNullOrEmpty(pais_orInput);
                 if (flag)
                 {
                     Console.WriteLine("Entrada inválida. Por gentileza indique o país novamente!");
@@ -59,8 +66,8 @@ public class Registros
         {
             try
             {
-                string fabricante = Console.ReadLine();
-                flag = String.IsNullOrEmpty(fabricante);
+                fabricanteInput = Console.ReadLine();
+                flag = String.IsNullOrEmpty(fabricanteInput);
                 if (flag)
                 {
                     Console.WriteLine("Entrada inválida. Por gentileza indique o fabricante novamente!");
@@ -78,8 +85,8 @@ public class Registros
         {
             try
             {
-                string categoria = Console.ReadLine();
-                flag = String.IsNullOrEmpty(categoria);
+                categoriaInput = Console.ReadLine();
+                flag = String.IsNullOrEmpty(categoriaInput);
                 if (flag)
                 {
                     Console.WriteLine("Entrada inválida. Por gentileza indique a categoria novamente!");
@@ -97,8 +104,8 @@ public class Registros
         {
             try
             {
-                string nome = Console.ReadLine();
-                flag = String.IsNullOrEmpty(nome);
+                nomeInput = Console.ReadLine();
+                flag = String.IsNullOrEmpty(nomeInput);
                 if (flag)
                 {
                     Console.WriteLine("Entrada inválida. Por gentileza indique o nome novamente!");
@@ -115,12 +122,11 @@ public class Registros
         {
             try
             {
-                double preco = 0;
                 bool precoValido = false;
                 while (!precoValido)
                 {
                     Console.WriteLine("Indique o preço do produto (formato 0.00):");
-                    precoValido = double.TryParse(Console.ReadLine(), out preco);
+                    precoValido = double.TryParse(Console.ReadLine(), out precoInput);
                     if (!precoValido) Console.WriteLine("Valor inválido! Tente novamente.");
                     else flag = false;
                 }
@@ -136,12 +142,11 @@ public class Registros
         {
             try
             {
-                int on_hand = 0;
                 bool estoqueValido = false;
                 while (!estoqueValido)
                 {
                     Console.WriteLine("Indique a quantidade inicial em estoque:");
-                    estoqueValido = int.TryParse(Console.ReadLine(), out on_hand);
+                    estoqueValido = int.TryParse(Console.ReadLine(), out on_handInput);
                     if (!estoqueValido) Console.WriteLine("Valor inválido! Tente novamente.");
                     else flag = false;
                 }
@@ -153,18 +158,18 @@ public class Registros
         }
 
         new Registros(
-            nome,
-            preco,
-            on_hand,
-            pais_or,
-            fabricante,
-            categoria
+            nomeInput,
+            precoInput,
+            on_handInput,
+            pais_orInput,
+            fabricanteInput,
+            categoriaInput
         );
 
         return "Produto cadastrado com sucesso!";
     }
 
-    public string Listar()
+    public static string Listar()
     {
         if (todosRegistros.Count == 0)
         {
@@ -222,7 +227,7 @@ public class Registros
         return null;
     }
 
-    public string Remover()
+    public static string Remover()
     {
         if (todosRegistros.Count == 0)
         {
@@ -250,7 +255,7 @@ public class Registros
         }
     }
 
-    public string Alteracao(bool metodo)
+    public static string Alteracao(bool metodo)
     {
         if (todosRegistros.Count == 0)
         {
@@ -323,4 +328,18 @@ public class Registros
             Console.WriteLine("SKU inválido. Tente novamente!");
         }
     }
+
+    public static string LimparRegistros()
+    {
+        Console.WriteLine("Tem certeza que deseja apagar TODOS os registros? (S/N)");
+        var confirmacao = Console.ReadLine().ToUpper();
+
+        if (confirmacao == "S")
+        {
+            todosRegistros.Clear();
+            return "Todos os registros foram removidos com sucesso!";
+        }
+        return "Operação cancelada.";
+    }
+
 }
