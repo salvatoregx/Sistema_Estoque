@@ -137,26 +137,6 @@ public class Registros
             }
         }
 
-        flag = true;
-        while (flag)
-        {
-            try
-            {
-                bool estoqueValido = false;
-                while (!estoqueValido)
-                {
-                    Console.WriteLine("Indique a quantidade inicial em estoque:");
-                    estoqueValido = int.TryParse(Console.ReadLine(), out on_handInput);
-                    if (!estoqueValido) Console.WriteLine("Valor inválido! Tente novamente.");
-                    else flag = false;
-                }
-            }
-            catch (Exception e)
-            {
-                Console.WriteLine("Entrada inválida. Insira a quantidade novamente!");
-            }
-        }
-
         new Registros(
             nomeInput,
             precoInput,
