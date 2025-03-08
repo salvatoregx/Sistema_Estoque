@@ -14,11 +14,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\sgxer\\Downloads\\Sistema_Estoque\\Sistema_Estoque\\Sistema_Estoque.csproj",
+      "projectUniqueName": "C:\\Users\\sgxer\\OneDrive\\Análises e Cursos\\##Senac - Banco de Dados\\2.1 - Algoritmos e Programação II\\Sistema_Estoque\\Sistema_Estoque\\Sistema_Estoque.csproj",
       "projectName": "Sistema_Estoque",
-      "projectPath": "C:\\Users\\sgxer\\Downloads\\Sistema_Estoque\\Sistema_Estoque\\Sistema_Estoque.csproj",
+      "projectPath": "C:\\Users\\sgxer\\OneDrive\\Análises e Cursos\\##Senac - Banco de Dados\\2.1 - Algoritmos e Programação II\\Sistema_Estoque\\Sistema_Estoque\\Sistema_Estoque.csproj",
       "packagesPath": "C:\\Users\\sgxer\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\sgxer\\Downloads\\Sistema_Estoque\\Sistema_Estoque\\obj\\",
+      "outputPath": "C:\\Users\\sgxer\\OneDrive\\Análises e Cursos\\##Senac - Banco de Dados\\2.1 - Algoritmos e Programação II\\Sistema_Estoque\\Sistema_Estoque\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"

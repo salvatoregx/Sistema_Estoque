@@ -125,7 +125,7 @@ public class Registros
                 bool precoValido = false;
                 while (!precoValido)
                 {
-                    Console.WriteLine("Indique o preço do produto (formato 0.00):");
+                    Console.WriteLine("Indique o preço do produto (formato 0,00):");
                     precoValido = double.TryParse(Console.ReadLine(), out precoInput);
                     if (!precoValido) Console.WriteLine("Valor inválido! Tente novamente.");
                     else flag = false;
